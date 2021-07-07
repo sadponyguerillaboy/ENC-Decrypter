@@ -1,6 +1,6 @@
 # ENC Decrypter
 
-Python script for decrypting enc and data files in apple hardware diagnostics
+Python script for decrypting enc and data files in AST and hardware diagnostics.
 
 __Required Python Modules:__
 ```
@@ -23,7 +23,7 @@ Storage.efi also has its own decrypt / decode functions that handle this (go fig
 and rounds to 0x142FB and disable terminator bit. Then run the script with '-r'. Watch the output size of the dumped file. Once it reaches 83kb, you can 
 ctrl + c to kill the process. I'll work on a better implementation that will handle all this.
 
-__AST2 Diagnostics URL:__
+__Diagnostics URL:__
 
 The diagnostics URL is stored in the diags.enc file located in the Support folder of the diagnostics. Once decrypted, the URL address can be altered.
 It requires a DNS compatible address. It doesn't like numerical IP's. If running locally, use something like nmap or check under the sharing settings 
@@ -41,4 +41,4 @@ decrypted and altered diags.enc.
 It appreas that the diags.efi application uses the same EFI protocols to load all files. It just does a header scan to check for encryption. All
 encrypted files follow the same format. All begin with ABBACDDCEFFE1221 Followed by the filsize of the enc file minus the header. If this is detected, 
 it initiates the decryption and then decoding processes. But if no decryption is detected, it appears to load files normally. So you are able to modify 
-the 'diagnostics-url' field to any value without size restrictions as was involved in the hardcoded url patch. Modification of the url in diags.enc
+the 'diagnostics-url' field to any value without size restrictions.
