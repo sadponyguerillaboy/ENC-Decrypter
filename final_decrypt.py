@@ -83,12 +83,6 @@ def main(in_file, out_file, round_option):
 	#keyfile = 'keyfile.bin'
 
 	# Load Key and IV
-	#with open(keyfile, 'rb') as key_file_in:
-	#	key_file_in = open(keyfile, 'rb') 	# Open the file to read bytes
-	#	key = key_file_in.read(16) 			# Read Key - 16 bytes
-	#	key_file_in.seek(16) 				# Seek to IV
-	#	iv = key_file_in.read(16) 			# Read IV - 16 bytes
-	#	key_file_in.close()
 	key = b'\x8A\xAE\x04\x08\xA0\x7B\x43\xC0\xAB\x7C\x5C\xEB\xBC\x57\x4F\x23'
 	iv = b'\x11\x22\x33\x44\x55\xA6\x77\x88\x99\x00\x11\x22\x33\x44\x55\xB6'
 
