@@ -11,8 +11,6 @@ from Crypto.Cipher import AES
 # 8A AE 04 08 A0 7B 43 C0  AB 7C 5C EB BC 57 4F 23  .....{C..|\...O#  <-- key 16 bytes
 # 11 22 33 44 55 A6 77 88  99 00 11 22 33 44 55 B6  ."3DU.w...."3DU.  <-- iv  16 bytes
 # Key and IV are currently hardcoded into the Diagnostic utility. They should remain static.
-# This script loads them via the included keyfile.bin. They are stored externally to allow
-# for the possability of future changes.
 
 # Events during Decryption & Decoding:
 # First layer is an encryption. AES CBC Decryption with above key and iv. All encrypted files share same header format of ABBACDDCEFFE1221 and then filesize.
