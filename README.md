@@ -1,6 +1,6 @@
 # ENC Decrypter
 
-Python script for decrypting enc and data files in the ast2 diagnostics
+Python script for decrypting enc and data files in apple hardware diagnostics
 
 __Required Python Modules:__
 ```
