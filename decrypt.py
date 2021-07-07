@@ -29,7 +29,7 @@ from Crypto.Cipher import AES
 # round calculation (ex. A3B) is also the location where the terminator bit goes in the decrypted file
 # so any padding at the end of the decrypted but non-decoded file is the amount used to subtract for rounds calculation, just repeated as padding
 
-# after file is decrypted, there is a second layer of encoding / compression which was reversed from asm
+# after file is decrypted, there is a second layer of custom xor 80 encoding / compression which was reversed from asm
 # this second layer of encoding is the same used in the much older asd efi diagnostics
 
 # regular enc files and data files use exactly same method
@@ -90,9 +90,9 @@ def main(in_file, out_file, round_option):
 	# Get Encrypted file
 	with open(encfile, 'rb') as enc_file_in:
 		enc_file_in.seek(8) 				# Seek to ENC size of data after header
-		enc_size = enc_file_in.read(2) 		# Read ENC size
+		enc_size = enc_file_in.read(2) 			# Read ENC size
 		enc_file_in.seek(16) 				# Seek past header info
-		encrypted_data = enc_file_in.read() # Read the rest of the data from offset 16 to end of file
+		encrypted_data = enc_file_in.read() 		# Read the rest of the data from offset 16 to end of file
 		enc_file_in.close()
 
 	# Perform Decryption
