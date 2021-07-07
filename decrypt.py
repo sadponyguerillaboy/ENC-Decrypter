@@ -16,7 +16,7 @@ from Crypto.Cipher import AES
 # First layer is an encryption. AES CBC Decryption with above key and iv. All encrypted files share same header format of ABBACDDCEFFE1221 and then filesize.
 # Once decrypted, the second layer is an encoding / compression. The header is 3 blocks. The first block of the header represents a gate 
 # (in binary, open / closed), as it gets reversed and signifies if decryption can proceed. But irrelevant for our purposes. Can just skip past. 
-# second part is final extraxted file size, and also gets reversed, so ex. 000023dc becomes DC23 0000 (zeros not read). The third block is 
+# second part is final extracted file size, and also gets reversed, so ex. 000023dc becomes DC23 0000 (zeros not read). The third block is 
 # unsure. but if you divide the first half of the third part eg 514C by the final extracted filesize from the second block, it leaves 0 remainder. 
 # This remains true for all files. So must represent some sort of checksum during the encoding / compression process, but is not read at all 
 # by diags during extraction. So can probably just be left as is or filled with random bytes during re-encryption.
@@ -28,6 +28,9 @@ from Crypto.Cipher import AES
 # ex. A40 - 05 = A38
 # round calculation (ex. A3B) is also the location where the terminator bit goes in the decrypted file
 # so any padding at the end of the decrypted but non-decoded file is the amount used to subtract for rounds calculation, just repeated as padding
+
+# after file is decrypted, there is a second layer of encoding / compression which was reversed from asm
+# this second layer of encoding is the same used in the much older asd efi diagnostics
 
 # regular enc files and data files use exactly same method
 # diags.enc uses 7E rounds. Doesn't use regular rounds calculation.
