@@ -1,6 +1,6 @@
 # ENC Decrypter
 
-Python script for decrypting enc and data files in AST and apple hardware diagnostics. Diagnostics can be capture by performing a MITM on the built-in diagnostics activated when holding d during boot of most apple computers.
+Python script for decrypting enc and data files in AST and apple hardware diagnostics. Diagnostics can be aquired by performing a MITM of the built-in diagnostics that can be run by holding "d" during boot of most apple computers.
 
 __Required Python Modules:__
 ```
